@@ -4,28 +4,28 @@
       Borrow
       <input
         type="number"
-        v-model="borrowed"
+        v-model.number="borrowed"
       >
     </label>
     <label>
       Interest rate
       <input
         type="number"
-        v-model="interestRate"
+        v-model.number="interestRate"
       >
     </label>
     <label>
       Length of loan
       <input
         type="number"
-        v-model="loanLengthInYears"
+        v-model.number="loanLengthInYears"
       >
     </label>
     <label>
       Fees
       <input
         type="number"
-        v-model="fees"
+        v-model.number="fees"
       >
     </label>
 
