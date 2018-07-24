@@ -106,8 +106,4 @@ export default {
   .inline input {
     display: inline-block;
   }
-
-  .repayments {
-    font-size: 2rem;
-  }
 </style>

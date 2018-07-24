@@ -1,5 +1,5 @@
 <template>
-  <p class="repayments">Your repayments will be<br> {{ repayments }}</p>
+  <p class="repayments">Your repayments will be<br> <span>{{ repayments }}</span></p>
 </template>
 
 <script>
@@ -72,14 +72,11 @@ export default {
 </script>
 
 <style scoped>
-  select {
-    display: block;
-    font-size: 1.25rem;
-    margin-top: .25rem;
+  .repayments {
+    font-size: 2rem;
   }
 
-  select.inline {
-    display: inline;
-    margin-left: .25rem;
+  span {
+    color: salmon;
   }
 </style>
