@@ -46,17 +46,26 @@
       </div>
     </label>
 
-    <p class="repayments">Your repayments will be<br> {{ repayments }}</p>
+    <repayment-indicator
+      :interest-rate="interestRate"
+      :loan-length-in-years="loanLengthInYears"
+      :borrowed="borrowed"
+      :fees="fees"
+      :feeFrequency="feeFrequency"
+      :repaymentFrequency="repaymentFrequency"
+    />
   </div>
 </template>
 
 <script>
 import SelectPeriod from './components/SelectPeriod';
+import RepaymentIndicator from './components/RepaymentIndicator';
 
 export default {
   name: 'App',
   components: {
-    SelectPeriod
+    SelectPeriod,
+    RepaymentIndicator
   },
   data() {
     return {
@@ -66,29 +75,6 @@ export default {
       loanLengthInYears: 30,
       fees: 10,
       feeFrequency: 1
-    }
-  },
-  computed: {
-    repayments() {
-      let monthlyRate = parseFloat(this.interestRate) / 100 / 12;
-      let loanLengthInMonths = this.loanLengthInYears * 12;
-      let monthlyRepayment = this.borrowed * (monthlyRate * Math.pow(1 + monthlyRate, loanLengthInMonths)) / (Math.pow(1 + monthlyRate, loanLengthInMonths) - 1);
-      let monthlyRepaymentWithFees = monthlyRepayment + ((this.fees * this.feeFrequency) / 12);
-      // Not the actual maths, just faking this part.
-      let repaymentPerPeriod = (monthlyRepaymentWithFees * 12) / this.repaymentFrequency;
-      return `$${Math.round(repaymentPerPeriod)} per ${this.getPeriodName(this.repaymentFrequency)}`;
-    }
-  },
-  methods: {
-    getPeriodName(value) {
-      const periods = [
-        { text: 'year', value: 1 },
-        { text: 'quarter', value: 4 },
-        { text: 'month', value: 12 },
-        { text: 'fortnight', value: 26 },
-        { text: 'week', value: 52 },
-      ];
-      return periods.find(period => period.value === value).text;
     }
   }
 }
