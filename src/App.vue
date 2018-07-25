@@ -27,7 +27,7 @@
       Repayment frequency
       <select-period
         :default-selected="repaymentFrequency"
-        @update="repaymentFrequency = parseFloat($event.target.value)"
+        @input="repaymentFrequency = parseFloat($event)"
       />
     </label>
     <label>

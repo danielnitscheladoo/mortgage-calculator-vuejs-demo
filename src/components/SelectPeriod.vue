@@ -2,7 +2,6 @@
   <select
     :class="{ inline: inline }"
     v-model="selected"
-    @input="$emit('update', $event)"
   >
     <option
       :key="period.value"
